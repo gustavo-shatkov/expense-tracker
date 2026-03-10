@@ -62,7 +62,7 @@ public class ExpenseConsoleUI {
         try{ 
             service.addExpense(description, amount, category);
             System.out.println("Despesa adicionada com sucesso!");
-        } catch (IllegalAccessException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("Erro: " + e.getMessage());
         }
     }
