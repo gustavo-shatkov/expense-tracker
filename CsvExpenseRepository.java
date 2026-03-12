@@ -27,7 +27,7 @@ public class CsvExpenseRepository implements ExpenseRepository {
     @Override
     public void save(Expense expense) {
         Path path = Paths.get(FILE_PATH);
-        // Abre o arquivo no modo APPEND (adicionar ao final)
+
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
             String line = String.join(DELIMITER,
                     expense.id(),
@@ -51,16 +51,16 @@ public class CsvExpenseRepository implements ExpenseRepository {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.trim().isEmpty()) continue; // Ignora linhas em branco
+                if (line.trim().isEmpty()) continue; 
                 
                 String[] parts = line.split(DELIMITER);
                 if (parts.length == 5) {
                     Expense expense = new Expense(
-                            parts[0],                                 // id
-                            parts[1],                                 // description
-                            Double.parseDouble(parts[2]),             // amount
-                            parts[3],                                 // category
-                            LocalDate.parse(parts[4])                 // date
+                            parts[0],                                 
+                            parts[1],                                 
+                            Double.parseDouble(parts[2]),            
+                            parts[3],                                 
+                            LocalDate.parse(parts[4])                 
                     );
                     expenses.add(expense);
                 }

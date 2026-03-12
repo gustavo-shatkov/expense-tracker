@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.beans.Transient;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,7 +38,7 @@ public class ExpenseServiceTest {
             expenseService.addExpense("Uber", -5.0, "Transporte");
         });
 
-        assertEquals("O valor da despesa deve ser maior que zero.", exception.GetMessage());
+        assertEquals("O valor deve ser maior que zero.", exception.getMessage());
         assertTrue(expenseService.getAllExpenses().isEmpty());
     }
 
@@ -60,7 +59,7 @@ public class ExpenseServiceTest {
 
         double total = expenseService.calculateTotalExpenses();
 
-        assertEquals(37.50, total, "O total das despesas deve ser 37.50")
+        assertEquals(37.50, total, "O total das despesas deve ser 37.50");
     }
 
 }
