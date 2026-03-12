@@ -6,3 +6,7 @@
 *.iml
 .vscode/
 *.csv
+
+*.csv
+*.jar
+manifest.txt
